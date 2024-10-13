@@ -1,9 +1,13 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { MovieDetail } from "../../types/movieDetailProps";
+
+interface Props {
+  info: MovieDetail;
+}
 
 // 영화 정보 컴포넌트
-const MovieInfo = ({ info }) => {
+const MovieInfo = ({ info }: Props) => {
   const navigate = useNavigate();
   return (
     <Wrapper>

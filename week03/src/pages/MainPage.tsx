@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 import Header from "../components/Header";
 import TotalMovies from "../components/mainpage/TotalMovies";
 import RecommendMovies from "../components/mainpage/RecommendMovies";
 import Loading from "../components/Loading";
+import { Movies } from "../types/movieProps";
 
 const MainPage = () => {
   const [loading, setLoading] = useState(true); // 로딩 버튼
-  const [movies, setMovies] = useState([]); // 영화 리스트
-  const [isSelectTotal, setIsSelectTotal] = useState(false); // 탭 - 전체 선택할 경우 true
+  const [movies, setMovies] = useState<Movies[]>([]); // 영화 리스트
+  const [isSelectTotal, setIsSelectTotal] = useState(true); // 탭 - 전체 선택할 경우 true
 
   const getMovies = async () => {
     const data = await axios.get(

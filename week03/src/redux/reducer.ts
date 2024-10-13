@@ -10,13 +10,21 @@ export const setDarkMode = () => {
   };
 };
 
+type StateType = {
+  isLightMode: boolean;
+};
+
+type ActionType = {
+  type: "LIGHTMODE" | "DARKMODE";
+}
+
 // 초기상태
-const initialState = {
+const initialState: StateType = {
   isLightMode: false,
 };
 
 // 리듀서 함수
-function reducer(state = initialState, action) {
+function reducer(state = initialState, action: ActionType) {
   switch (action.type) {
     case "LIGHTMODE":
       return {

@@ -1,4 +1,3 @@
-import React from "react";
 import { styled } from "styled-components";
 
 import Slider from "react-slick";
@@ -7,16 +6,26 @@ import "slick-carousel/slick/slick-theme.css";
 
 import arrow from "../../assets/ic_arrow.png";
 import MovieItem from "./MovieItem";
+import { Movies } from "../../types/movieProps";
+
+interface Props {
+  title: string;
+  movies: Movies[];
+}
+
+interface Arrow {
+  onClick?: () => void;
+}
 
 // 캐러셀 컴포넌트
-const Carousel = ({ title, movies }) => {
-  const PrevArrow = ({ currentSlide, slideCount, ...props }) => (
+const Carousel = ({ title, movies }: Props) => {
+  const PrevArrow = ({ ...props }: Arrow) => (
     <Prev {...props}>
       <img src={arrow} alt="pre-arrow" />
     </Prev>
   );
 
-  const NextArrow = ({ currentSlide, slideCount, ...props }) => (
+  const NextArrow = ({ ...props }: Arrow) => (
     <Next {...props}>
       <img src={arrow} alt="next-arrow" />
     </Next>

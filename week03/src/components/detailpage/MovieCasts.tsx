@@ -1,16 +1,21 @@
-import React from "react";
 import { styled } from "styled-components";
 import CastItem from "./CastItem";
+import { Cast } from "../../types/movieDetailProps";
+
+interface Props {
+  casts: Cast[];
+}
 
 // 영화 배우 목록 컴포넌트
-const MovieCasts = ({ casts }) => {
+const MovieCasts = ({ casts }: Props) => {
+  console.log(casts)
   return (
     <Wrapper>
       <Divider />
       <Title>Casts</Title>
       {/* 배우 목록 */}
       <Actors>
-        {casts.map((cast, index) => {
+        {casts?.map((cast, index) => {
           return <CastItem key={index} cast={cast} />;
         })}
       </Actors>

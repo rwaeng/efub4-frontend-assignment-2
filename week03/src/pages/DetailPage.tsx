@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { styled } from "styled-components";
+import styled from "styled-components";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 import MovieInfo from "../components/detailpage/MovieInfo";
 import MovieCasts from "../components/detailpage/MovieCasts";
+import { MovieDetail } from "../types/movieDetailProps";
 
 const DetailPage = () => {
   const params = useParams();
   const movieId = params.id; // 영화 id
 
   const [loading, setLoading] = useState(true); // 로딩 버튼
-  const [detail, setDetail] = useState([]); // 영화 상세 정보
+  const [detail, setDetail] = useState<MovieDetail | undefined>(); // 영화 상세 정보
 
   const getMovies = async () => {
     const data = await axios.get(
@@ -21,6 +22,7 @@ const DetailPage = () => {
 
     setLoading(false); // loading 중단
     setDetail(data.data.data.movie);
+    console.log(data.data.data.movie);
   };
 
   useEffect(() => {
@@ -35,8 +37,8 @@ const DetailPage = () => {
           <Loading />
         ) : (
           <>
-            <MovieInfo info={detail} />
-            {detail.cast && <MovieCasts casts={detail.cast} />}
+            {detail && <MovieInfo info={detail} />}
+            {detail && <MovieCasts casts={detail?.cast} />}
           </>
         )}
       </Wrapper>

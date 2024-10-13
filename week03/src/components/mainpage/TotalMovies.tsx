@@ -1,9 +1,13 @@
-import React from "react";
 import { styled } from "styled-components";
 import MovieItem from "./MovieItem";
+import { Movies } from "../../types/movieProps";
+
+interface Props {
+  movies: Movies[];
+}
 
 // 전체 탭 컴포넌트
-const TotalMovies = ({ movies }) => {
+const TotalMovies = ({ movies }: Props) => {
   return (
     <Wrapper>
       {movies.map((el) => {

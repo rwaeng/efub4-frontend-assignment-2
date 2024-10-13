@@ -4,9 +4,13 @@ import MainPage from "./pages/MainPage";
 import DetailPage from "./pages/DetailPage";
 import GlobalStyle from "./components/GlobalStyle";
 
+type StateType = {
+  isLightMode: boolean;
+};
+
 function App() {
   // useSelector로 현재 상태 받아오기
-  const lightMode = useSelector((state) => state.isLightMode);
+  const lightMode = useSelector((state: StateType) => state.isLightMode);
 
   return (
     <>

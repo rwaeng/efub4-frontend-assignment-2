@@ -1,19 +1,13 @@
-import { FC } from "react";
-import { styled } from "styled-components";
-import thumbnail from "../../assets/ic_thumbnil.png";
-
-interface Cast {
-  name: string;
-  character_name: string;
-  url_small_image?: string;
-}
+import styled from "styled-components";
+import thumbnail from "../../assets/ic_thumbnail.png";
+import { Cast } from "../../types/movieDetailProps";
 
 interface Props {
   cast: Cast;
 }
 
 // 각 영화 배우 컴포넌트
-const CastItem: FC<Props> = ({ cast }) => {
+const CastItem = ({ cast }: Props) => {
   return (
     <Wrapper>
       <ActorImage
